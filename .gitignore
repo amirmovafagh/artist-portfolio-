@@ -1,0 +1,9 @@
+/venv/
+/media/
+/tmp/
+/public/
+/.env
+/.idea/
+/idea/
+/.idea/ecommerce_project.iml
+/.idea/misc.xml.
