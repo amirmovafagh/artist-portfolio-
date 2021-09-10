@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class WorksConfig(AppConfig):
+class HomeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'works'
-    verbose_name = "نمونه کارها"
+    name = 'home'
+    verbose_name = "خانه"
 
