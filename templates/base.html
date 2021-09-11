@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    {% load static %}
+    {% load custom_tags %}
+    {% website_info as info %}
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{{ info.title }} | {% block title %}{% endblock %}</title>
+    <meta content="{% block keywords %}{% endblock %}" name="keywords">
+    <meta content="{% block description %}{% endblock %}" name="description">
+
+    <meta name="generator" content="devroid.ir"/>
+    <link href="http://www.devroid.ir/" rel="canonical">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="{% static '' %}lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="{% static '' %}lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="{% static '' %}lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{% static '' %}lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="{% static '' %}lib/hover/hover.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="{% static '' %}css/style.css" rel="stylesheet">
+
+    <!-- Responsive css -->
+    <link href="{% static '' %}css/responsive.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="media/images/favicon.png">
+
+    <!-- =======================================================
+      Theme Name: Folio
+      Theme URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
+      Author: BootstrapMade.com
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+
+
+{% block header %} {% endblock %}
+<!--{% block slider %} {% endblock %}-->
+{% block body %} {% endblock %}
+{% block footer %} {% endblock %}
+{% include "footer.html" %}
+</body>
+</html>

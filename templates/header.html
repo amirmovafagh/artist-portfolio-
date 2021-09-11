@@ -1,0 +1,49 @@
+{% load static %}
+{% load custom_tags %}
+{% website_info as info %}
+
+<!-- start section navbar -->
+<nav id="main-nav">
+    <div class="row">
+        <div class="container">
+
+            <div class="logo">
+                <a href="{% url 'home:index' %}"><img src="{{ info.icon.url }}" alt="logo"></a>
+            </div>
+
+            <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+            <ul class="nav-menu list-unstyled">
+                <li><a href="#header" class="smoothScroll">Home</a></li>
+                <li><a href="#about" class="smoothScroll">About</a></li>
+                <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
+                <li><a href="#journal" class="smoothScroll">Blog</a></li>
+                <li><a href="#contact" class="smoothScroll">Contact</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!-- End section navbar -->
+
+
+<!-- start section header -->
+<div id="header" class="home">
+
+    <div class="container">
+        <div class="header-content">
+            <h1>I'm <span class="typed"></span></h1>
+            <p>designer, developeur, photographer</p>
+
+            <ul class="list-unstyled list-social">
+                <li><a href="{{ info.facecbook }}"><i class="ion-social-facebook"></i></a></li>
+                <li><a href="{{ info.twitter }}"><i class="ion-social-twitter"></i></a></li>
+                <li><a href="{{ info.instagram }}"><i class="ion-social-instagram"></i></a></li>
+                <li><a href="{{ info.youtube }}"><i class="ion-social-youtube"></i></a></li>
+                <li><a href="{{ info.telegram }}"><i class="ion-social-tumblr"></i></a></li>
+                <li><a href="{{ info.linkedin }}"><i class="ion-social-linkedin"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End section header -->
