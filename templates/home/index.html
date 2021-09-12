@@ -129,8 +129,6 @@
 
                     <ul class="nav list-unstyled" id="portfolio-flters">
                         <li class="filter filter-active" data-filter=".all">all</li>
-                        <li class="filter" data-filter=".branding">branding</li>
-
                         {% for cat in category %}
                             {% if cat.parent == None %}
                                 <li class="filter" data-filter=".{{ cat.title }}">{{ cat.title }}
