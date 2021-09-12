@@ -130,51 +130,67 @@
                     <ul class="nav list-unstyled" id="portfolio-flters">
                         <li class="filter filter-active" data-filter=".all">all</li>
                         <li class="filter" data-filter=".branding">branding</li>
-                        <li class="filter" data-filter=".mockups">mockups</li>
-                        <li class="filter" data-filter=".uikits">ui kits</li>
-                        <li class="filter" data-filter=".webdesign">web design</li>
-                        <li class="filter" data-filter=".photography">photography</li>
+
+                        {% for cat in category %}
+                            {% if cat.parent == None %}
+                                <li class="filter" data-filter=".{{ cat.title }}">{{ cat.title }}
+
+                                {% if cat.children.all %}
+                                    <ul class="second-level">
+                                    <div class="container">
+
+                                        {% for cat in cat.children.all %}
+                                            <li class="filter" data-filter=".{{ cat.title }}">{{ cat.title }}</li>
+
+                                        {% endfor %}
+                                    </div>
+                                    </ul>
+                                {% endif %}</li>
+
+                            {% endif %}
+
+                        {% endfor %}
                     </ul>
 
                 </div>
 
                 <div class="portfolio-container">
-
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits webdesign">
-                        <a class="popup-img" href="/media/images/portfolio/1.jpg">
-                            <img src="/media/images/portfolio/1.jpg" alt="img">
+                    {% for work in works %}
+                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all {% for workCat in work.category.all %} {{ workCat.title }} {% endfor %}">
+                        <a class="popup-img" href="{{work.image.url}}">
+                            <img src="{{work.image.url}}" alt="img">
                         </a>
                     </div>
+                    {% endfor %}
+<!--                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups uikits photography">-->
+<!--                        <a class="popup-img" href="/media/images/portfolio/2.jpg">-->
+<!--                            <img src="/media/images/portfolio/2.jpg" alt="img">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups uikits photography">
-                        <a class="popup-img" href="/media/images/portfolio/2.jpg">
-                            <img src="/media/images/portfolio/2.jpg" alt="img">
-                        </a>
-                    </div>
+<!--                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding webdesig photographyn">-->
+<!--                        <a class="popup-img" href="/media/images/portfolio/3.jpg">-->
+<!--                            <img src="/media/images/portfolio/3.jpg" alt="img">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding webdesig photographyn">
-                        <a class="popup-img" href="/media/images/portfolio/3.jpg">
-                            <img src="/media/images/portfolio/3.jpg" alt="img">
-                        </a>
-                    </div>
+<!--                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups webdesign photography">-->
+<!--                        <a class="popup-img" href="/media/images/portfolio/4.jpg">-->
+<!--                            <img src="/media/images/portfolio/4.jpg" alt="img">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups webdesign photography">
-                        <a class="popup-img" href="/media/images/portfolio/4.jpg">
-                            <img src="/media/images/portfolio/4.jpg" alt="img">
-                        </a>
-                    </div>
+<!--                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits photography">-->
+<!--                        <a class="popup-img" href="/media/images/portfolio/5.jpg">-->
+<!--                            <img src="/media/images/portfolio/5.jpg" alt="img">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all branding uikits photography">
-                        <a class="popup-img" href="/media/images/portfolio/5.jpg">
-                            <img src="/media/images/portfolio/5.jpg" alt="img">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups uikits webdesign">
-                        <a class="popup-img" href="/media/images/portfolio/6.jpg">
-                            <img src="/media/images/portfolio/6.jpg" alt="img">
-                        </a>
-                    </div>
+<!--                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all mockups uikits webdesign">-->
+<!--                        <a class="popup-img" href="/media/images/portfolio/6.jpg">-->
+<!--                            <img src="/media/images/portfolio/6.jpg" alt="img">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -269,10 +285,16 @@
                         <h2 class="mb-30">GET IN TOUCH</h2>
 
                         <ul class="contact-details">
-                            <li><span>23 Main, Street</span></li>
-                            <li><span>New York, United States</span></li>
-                            <li><span>+88 01912704287</span></li>
-                            <li><span>example@example.com</span></li>
+                            {% if info.company != None %}
+                            <li><span>{{info.company}}</span></li>
+                            <li><span>{{info.address}}</span></li>
+                            {% endif %}
+
+                            <li><span>{{info.phone}}</span></li>
+                            {% if info.phone2 != None %}
+                            <li><span>{{info.phone2}}</span></li>
+                            {% endif %}
+                            <li><span>{{info.email}}</span></li>
                         </ul>
 
                     </div>

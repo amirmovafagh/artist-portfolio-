@@ -14,7 +14,7 @@ class Setting(models.Model):
     )
     title = models.CharField(max_length=150, verbose_name='عنوان وب سایت')
     keywords = models.CharField(max_length=255, verbose_name='کلمات کلیدی')
-    description = models.CharField(max_length=255, verbose_name='عنوان')
+    description = models.CharField(max_length=255, verbose_name='توضیحات')
     company = models.CharField(blank=True, max_length=50, verbose_name='شرکت')
     address = models.CharField(blank=True, max_length=255, verbose_name='آدرس')
     phone = models.CharField(blank=True, max_length=20,

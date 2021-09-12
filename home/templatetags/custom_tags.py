@@ -5,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Count, Q
 
 from home.models import Setting
+from works.models import Category
 
 register = template.Library()
 
@@ -17,8 +18,8 @@ register = template.Library()
 #
 #
 # @register.simple_tag
-# def categorylist():
-#     return Category.objects.filter(status=True)
+# def category_list():
+#     return Category.objects.get(pk=1)
 
 
 # @register.inclusion_tag("category_navbar.html")
