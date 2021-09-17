@@ -1,0 +1,75 @@
+<div id="portfolio" class="text-center paddsection">
+
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>My Portfolio</h2>
+        </div>
+    </div>
+
+    <div id="portfolio_load_ajax" class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="portfolio-list">
+
+                    <ul class="nav list-unstyled" id="portfolio-flters">
+                        <li class="filter filter-active" data-filter=".all">all</li>
+                        {% for cat in category %}
+                        {% if cat.parent == None %}
+                        <li class="filter" data-filter=".{{ cat.title }}">{{ cat.title }}
+
+                            {% if cat.children.all %}
+                            <ul class="second-level">
+                                <div class="container">
+
+                                    {% for cat in cat.children.all %}
+                                    <li class="filter" data-filter=".{{ cat.title }}">{{ cat.title }}</li>
+
+                                    {% endfor %}
+                                </div>
+                            </ul>
+                            {% endif %}
+                        </li>
+
+                        {% endif %}
+
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+                <div class="portfolio-container">
+                    {% for work in page_obj %}
+                    <div class="col-lg-4 col-md-6 portfolio-thumbnail all {% for workCat in work.category.all %} {{ workCat.title }} {% endfor %}">
+                        <a class="popup-img" href="{{work.image.url}}">
+                            <img src="{{work.image.url}}" alt="img">
+                        </a>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+                <nav class="align-content-lg-stretch">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <button class="loadmoreworks page-link" data-page="{{ page_obj.previous_page_number }}">
+                                Previous
+                            </button>
+                        </li>
+                        {% endif %}
+
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <button class="loadmoreworks page-link" data-page="{{ page_obj.next_page_number }}">Next
+                            </button>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+</div>

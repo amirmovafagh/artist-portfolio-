@@ -4,7 +4,7 @@ from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Count, Q
 
-from home.models import Setting
+from home.models import Setting, Slideshow
 from works.models import Category
 
 register = template.Library()
@@ -38,6 +38,13 @@ register = template.Library()
 def website_info():
     if Setting.objects.exists():
         return Setting.objects.get(pk=1)
+    return None
+
+
+@register.simple_tag
+def slideshow():
+    if Slideshow.objects.exists():
+        return Slideshow.objects.active()
     return None
 
 

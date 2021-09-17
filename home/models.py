@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from extensions.utils import jalali_converter
 
@@ -33,7 +34,8 @@ class Setting(models.Model):
     youtube = models.CharField(blank=True, max_length=100, verbose_name='یوتیوب')
     twitter = models.CharField(blank=True, max_length=100, verbose_name='توییتر')
     linkedin = models.CharField(blank=True, max_length=100)
-    aboutus = RichTextUploadingField(blank=True, verbose_name='درباره ما')
+    aboutme1 = models.TextField(blank=True, verbose_name='درباره من 1')
+    aboutme2 = RichTextUploadingField(blank=True, verbose_name='درباره من 2')
     contact = RichTextUploadingField(blank=True, verbose_name='تماس با ما')
     worktime = RichTextUploadingField(blank=True, verbose_name='ساعت کاری')
     customerservices = RichTextUploadingField(blank=True, verbose_name='خدمات مشتریان')
@@ -56,3 +58,32 @@ class Setting(models.Model):
 
     def get_absolute_url(self):
         return reverse("home:AboutMe")
+
+
+class SlideshowManager(models.Manager):
+    def active(self):
+        return self.filter(status=True)
+
+
+class Slideshow(models.Model):
+    # description = models.CharField(blank=True, max_length=255, verbose_name="توضیحات")
+    image = models.ImageField(upload_to='images/', verbose_name="تصویر", )
+    status = models.BooleanField(default=True, verbose_name="وضعیت")
+    # page_url = models.URLField(max_length=200, verbose_name="آدرس")
+    ordering_position = models.IntegerField(verbose_name="ترتیب نمایش اسلاید")
+
+    objects = SlideshowManager()
+
+    def __str__(self):
+        return " # " + str(self.ordering_position)
+
+
+    def image_tag(self):
+        return mark_safe('<img style="border-radius: 5px" src="{}" height="75"/>'.format(self.image.url))
+
+    image_tag.short_description = "تصویر"
+
+    class Meta:
+        verbose_name = 'اسلاید'
+        verbose_name_plural = 'اسلایدشو'
+        ordering = ["ordering_position"]

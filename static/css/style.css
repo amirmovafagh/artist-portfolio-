@@ -8,10 +8,22 @@
 
 /*  General Styling
 /*-----------------------------------------------------------------------------------*/
+:root {
+  --background-color: #ffffff;
+  --text-color: #898989;
+}
+
+[data-theme="dark"] {
+  --background-color: #3F3F3F;
+  --text-color: #fff;
+}
+
+
 
 body {
-  background: #ffffff;
-  color: #898989;
+  background: var(--background-color);
+  color: var(--text-color);
+
   font-family: 'Poppins', helvetica;
   font-size: 15px;
   font-weight: 300;
@@ -32,18 +44,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  color: #292929;
+  /*color: #292929;*/
   font-weight: 600;
 }
 
 h4 {
-  color: #292929;
+  /*color: #292929;*/
   font-size: 14px;
   font-weight: 600;
 }
 
 a {
-  color: #292929;
+  /*color: #292929;*/
   text-decoration: none !important;
   -moz-transition: all 0.5s ease-in-out 0s;
   -ms-transition: all 0.5s ease-in-out 0s;
@@ -177,12 +189,12 @@ p {
 /*-----------------------------------------------------------------------------------*/
 
 nav {
-  position: fixed;
-  background: #fff;
+  position: relative;
+  /*background: #fff;*/
   z-index: 1000;
   width: 100%;
   padding: 20px;
-  display: none;
+  /*display: none;*/
   -webkit-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
   box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.18);
@@ -240,14 +252,14 @@ nav ul li a {
 /*-----------------------------------------------------------------------------------*/
 
 #header {
-  background: url("../../media/images/home-bg.jpg") repeat scroll center center / cover;
+  background: url("") repeat scroll center center / cover;
   height: 100vh;
   width: 100%;
 }
 
 
 #header .header-content {
-  height: 100vh;
+  /*height: 100vh;*/
   text-align: left;
   width: 100%;
   display: flex;

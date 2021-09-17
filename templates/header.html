@@ -1,10 +1,12 @@
 {% load static %}
 {% load custom_tags %}
 {% website_info as info %}
+{% slideshow as slides %}
 
 <!-- start section navbar -->
 <nav id="main-nav">
     <div class="row">
+
         <div class="container">
 
             <div class="logo">
@@ -15,10 +17,12 @@
 
             <ul class="nav-menu list-unstyled">
                 <li><a href="#header" class="smoothScroll">Home</a></li>
-                <li><a href="#about" class="smoothScroll">About</a></li>
                 <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
-                <li><a href="#journal" class="smoothScroll">Blog</a></li>
+                <li><a href="#journal" class="smoothScroll">T-shirt</a></li>
+                <li><a href="https://www.inprnt.com/" target="_blank" class="smoothScroll">Print</a></li>
+                <li><a href="#about" class="smoothScroll">About</a></li>
                 <li><a href="#contact" class="smoothScroll">Contact</a></li>
+
             </ul>
 
         </div>
@@ -29,11 +33,11 @@
 
 <!-- start section header -->
 <div id="header" class="home">
-
-    <div class="container">
+    <data id="slideshow-data" value="{{slides | length}}" data-images="{% for s in slides %} url(http://127.0.0.1:8000{{s.image.url}}) {% endfor %}"></data>
+    <div style="padding: 18px">
         <div class="header-content">
-            <h1>I'm <span class="typed"></span></h1>
-            <p>designer, developeur, photographer</p>
+            <h1>The <span class="typed"></span></h1>
+            <p>concept artist, illustrator,</p>
 
             <ul class="list-unstyled list-social">
                 <li><a href="{{ info.facecbook }}"><i class="ion-social-facebook"></i></a></li>
@@ -46,4 +50,6 @@
         </div>
     </div>
 </div>
+
+
 <!-- End section header -->
