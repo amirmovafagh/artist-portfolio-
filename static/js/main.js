@@ -79,7 +79,7 @@ $(document).ready(function () {
 
     $(function () {
         typed.typed({
-            strings: ["Art of Iman Sorayani.",],
+            strings: ["Art of Iman Sorayani",],
             typeSpeed: 100,
             loop: false,
         });
@@ -174,7 +174,7 @@ $(function () {
             $(this).css("background-image", images[i]);
             $(this).fadeIn("slow");
         });
-    }, 3000);
+    }, 6000);
 });
 
 // ========================================================================= //
