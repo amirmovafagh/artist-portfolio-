@@ -81,6 +81,7 @@ $(document).ready(function () {
         typed.typed({
             strings: ["Art of Iman Sorayani",],
             typeSpeed: 100,
+            showCursor: false,
             loop: false,
         });
     });
